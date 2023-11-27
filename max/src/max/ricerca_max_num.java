@@ -14,6 +14,18 @@ public class ricerca_max_num
 		num2 = sc.nextInt();
 		System.out.println("Inserisci il terzo numero: ");
 		num3 = sc.nextInt();
+		
+		while(num1 == num2 || num1 == num3 || num2 == num3)
+		{
+			System.out.println("Uno o più dei numeri inseriti sono uguali, reinseriscili!");
+			System.out.println("Inserisci il primo numero: ");
+			num1 = sc.nextInt();
+			System.out.println("Inserisci il secondo numero: ");
+			num2 = sc.nextInt();
+			System.out.println("Inserisci il terzo numero: ");
+			num3 = sc.nextInt();
+		}
+		
 		System.out.println("i numeri inseriti sono: "+num1+" - "+num2+ " - "+num3);
 		if (num1 > num2)
 		{
