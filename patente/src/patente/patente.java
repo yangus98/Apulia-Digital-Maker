@@ -25,7 +25,7 @@ public class patente {
         	stato = sc.next();
         }
         
-        if (stato.equals('I')) 
+        if (stato == "I")
         {
             if (anni >= 18) 
             {
@@ -36,7 +36,7 @@ public class patente {
                 System.out.println("Non hai diritto alla patente in Italia");
             }
         } 
-        else if (stato.equals('U')) 
+        else if (stato == "U") 
         {
             if (anni >= 16) 
             {
@@ -47,7 +47,7 @@ public class patente {
                 System.out.println("Non hai diritto alla patente in USA");
             }
         } 
-        else if (stato.equals('O')) 
+        else if (stato == "O") 
         {
             if (anni >= 17) 
             {
@@ -58,7 +58,7 @@ public class patente {
                 System.out.println("Non hai diritto alla patente in Olanda");
             }
         } 
-        else if (stato.equals('F')) 
+        else if (stato == "F") 
         {
             if (anni >= 21) 
             {
