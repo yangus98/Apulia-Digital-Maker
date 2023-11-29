@@ -5,10 +5,6 @@ import java.util.Scanner;
 public class Salvadanaio {
 	
 	public float risparmio, obiettivo, nuovo;
-
-	public static void main(String[] args) {
-		Salvadanaio salvadanaio = new Salvadanaio();
-	}
 	
 	public Salvadanaio()
 	{
@@ -19,14 +15,13 @@ public class Salvadanaio {
 		
 		while(risparmio < obiettivo) 
 		{
-			System.out.println("Quanto inserisci nel salvadanaio? ");
-			nuovo = sc.nextFloat();
-			if (nuovo > 0)
+			do
 			{
-			risparmio = risparmio + nuovo;
-			}else {
-				System.out.println("Devi inserire un valore positivo!");
+				System.out.println("Quanto inserisci nel salvadanaio? ");
+				nuovo = sc.nextFloat();
 			}
+			while(nuovo < 0);
+		    risparmio = risparmio + nuovo;
 		}
 		
 		System.out.println("Hai raggiunto l'obiettivo di "+ risparmio +" euro. Ora puoi comprare la moto!");
