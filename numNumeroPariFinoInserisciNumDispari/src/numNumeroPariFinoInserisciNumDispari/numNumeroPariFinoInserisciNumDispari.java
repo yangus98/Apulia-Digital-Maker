@@ -10,14 +10,13 @@ public class numNumeroPariFinoInserisciNumDispari {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Inserisci un numero: ");
-        num = sc.nextInt();
-		
-		while (num % 2 == 0) {
+		 do{
 			System.out.println("Inserisci un numero: ");
 	        num = sc.nextInt();
 			tentativi = tentativi + 1;
-		}
+		}while (num % 2 == 0);
+		
+		tentativi = tentativi - 1;
 		
 		System.out.println("Inserito numero dispari, hai inserito "+tentativi+" numeri/o pari.");
 	}

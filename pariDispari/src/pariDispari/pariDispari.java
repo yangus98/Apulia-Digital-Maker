@@ -6,17 +6,16 @@ public class pariDispari {
 
     public static void main(String[] args) {
         String risposta = "s";
+        int num;
 
         Scanner sc = new Scanner(System.in);
 
         while (risposta.equals("s")) {
-            System.out.println("Inserisci il numero maggiore di 2: ");
-            int num = sc.nextInt();
 
-            while (num <= 2) {
+            do{
                 System.out.println("Devi inserire un numero maggiore di 2: ");
                 num = sc.nextInt();
-            }
+            }while (num <= 2);
 
             while (num >= 1) {
                 num = num - 2;
