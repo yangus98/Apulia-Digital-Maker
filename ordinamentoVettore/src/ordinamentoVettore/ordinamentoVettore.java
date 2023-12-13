@@ -20,18 +20,18 @@ public class ordinamentoVettore {
 		do {
 		j = i + 1;
 		
-		 do {
-		if(v[j] < v[i]) {
-			temp = v[i];
-			v[i] = v[j];
-			v[j] = temp;
-		 }
+		   do{
+		     if(v[j] < v[i]) {
+			 temp = v[i];
+			 v[i] = v[j];
+			 v[j] = temp;
+		     }
 		
-		j = j + 1;
-		 }while(j <= 7);
+		     j = j + 1;
+		     }while(j <= 7);
 		
-		i = i + 1;
-		}while(i < 7);
+		     i = i + 1;
+		    }while(i < 7);
 		
 		for(i = 0; i <= 7; i++) {
 			System.out.print(v[i]+" ");
