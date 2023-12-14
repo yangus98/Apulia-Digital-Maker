@@ -6,10 +6,11 @@ import java.util.Scanner;
 public class ordinamentoMatriceQuadrataConversione {
 
 	public static void main(String[] args) {
-        int i, j = 0, grandezza, temp;
+        int i, j, grandezza, temp;
 
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
+        
         //creazione matrice con valori casuali
         System.out.println("Inserisci la grandezza della matrice: ");
         grandezza = sc.nextInt();
@@ -36,7 +37,8 @@ public class ordinamentoMatriceQuadrataConversione {
         int index = 0;
         for (i = 0; i < grandezza; i++) {
             for (j = 0; j < grandezza; j++) {
-                v[index = index + 1] = m[i][j];
+                v[index] = m[i][j];
+                index = index + 1;
             }
         }
         
@@ -53,10 +55,10 @@ public class ordinamentoMatriceQuadrataConversione {
 		     }
 		
 		     j = j + 1;
-		     }while(j <= grandezza*grandezza - 1);
+		     }while(j < grandezza*grandezza-1);
 		
 		     i = i + 1;
-		    }while(i < grandezza*grandezza - 1);
+		    }while(i < grandezza*grandezza-1);
 		
 		//da vettore in un altra matrice
 		int [][] m2 = new int[grandezza][grandezza];
@@ -64,7 +66,8 @@ public class ordinamentoMatriceQuadrataConversione {
 		int index2 = 0;
         for (i = 0; i < grandezza; i++) {
             for (j = 0; j < grandezza; j++) {
-                m2[i][j] = v[index2 = index2 + 1];
+                m2[i][j] = v[index2];
+                index2 = index2 +1 ;
             }
         }
         
