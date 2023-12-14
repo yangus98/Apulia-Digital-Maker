@@ -45,20 +45,20 @@ public class ordinamentoMatriceQuadrataConversione {
         //ordinamento vettore
         i = 0;
 		do {
-		j = i + 1;
+		  j = i + 1;
 		
 		   do{
-		     if(v[j] < v[i]) {
-			 temp = v[i];
-			 v[i] = v[j];
-			 v[j] = temp;
-		     }
+		      if(v[j] < v[i]) {
+			  temp = v[i];
+			  v[i] = v[j];
+			  v[j] = temp;
+		      }
 		
 		     j = j + 1;
-		     }while(j < grandezza*grandezza-1);
+		   }while(j <= (grandezza*grandezza)-1);
 		
-		     i = i + 1;
-		    }while(i < grandezza*grandezza-1);
+		  i = i + 1;
+	     }while(i < (grandezza*grandezza)-1);
 		
 		//da vettore in un altra matrice
 		int [][] m2 = new int[grandezza][grandezza];
