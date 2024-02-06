@@ -1,5 +1,5 @@
 public class Dipendente extends Persona {
-    float fissoMensile;
+    protected float fissoMensile;
     float retribuzioneOraria = 10.00f;
     int numeroOreGiornaliere = 8;
     float retribuzioneOrariaStraordinaria = 12.00f;
