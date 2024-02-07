@@ -10,5 +10,9 @@ public class Main {
         System.out.println("Inserisci il nome del secondo giocatore: ");
         String nomeGiocatore2 = sc.nextLine();
 
-        giocatore.calcoloVincitore(nomeGiocatore1,nomeGiocatore2);
+        if(giocatore.calcoloVincitore(nomeGiocatore1,nomeGiocatore2)){
+            System.out.println("Ha vinto "+nomeGiocatore1);
+        }else{
+            System.out.println("Ha vinto "+nomeGiocatore2);
+        }
 }   }
