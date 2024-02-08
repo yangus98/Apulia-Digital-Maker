@@ -1,9 +1,8 @@
+import java.util.Scanner;
+
 public class Giocatore {
     private String nome;
     private int punteggio;
-
-    private int incr = 0;
-    private int incr2 = 0;
 
     public Giocatore(String xNome, int xPunteggio) {
         this.nome = xNome;
@@ -18,31 +17,49 @@ public class Giocatore {
         return this.punteggio;
     }
 
-    public boolean calcoloVincitore(String nome1, String nome2) {
-        boolean risultato = false;
+    public void setNome(String xNome) {
+        this.nome = xNome;
+    }
 
-        Giocatore giocatore1 = new Giocatore(nome1, 0);
-        Giocatore giocatore2 = new Giocatore(nome2, 0);
+    public String getNome(){
+        return this.nome;
+    }
+
+    public String[] inserisciGiocatori() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Inserisci il nome del primo giocatore: ");
+        String nomeGiocatore1 = sc.nextLine();
+        System.out.println("Inserisci il nome del secondo giocatore: ");
+        String nomeGiocatore2 = sc.nextLine();
+
+        return new String[] {nomeGiocatore1, nomeGiocatore2};
+    }
+
+    public int[] calcoloVincitore(int punteggio1, int punteggio2) {
+
         Moneta moneta = new Moneta(false);
 
-        while (giocatore1.getPunteggio() < 5 && giocatore2.getPunteggio() < 5) {
+        while (punteggio1 < 5 && punteggio2 < 5) {
             moneta.setStato(moneta.lanciaMoneta());
 
             if (moneta.getStato()) {
-                incr = incr + 1;
-                giocatore1.setPunteggio(incr);
+
+                punteggio1 = punteggio1+1;
             } else {
-                incr2 = incr2 + 1;
-                giocatore2.setPunteggio(incr2);
+
+                punteggio2 = punteggio2+1;
             }
         }
 
-        if (giocatore1.getPunteggio() == 5) {
-            risultato = true;
-        } else if (giocatore2.getPunteggio() == 5) {
-            risultato = false;
-        }
+        return new int[]{punteggio1, punteggio2};
+    }
 
-        return risultato;
+    public void stampaRisultato(String nome1, String nome2, int punteggio1, int punteggio2){
+        if(punteggio1 > punteggio2){
+            System.out.println("Ha vinto "+nome1+" con un punteggio di "+punteggio1+" a "+punteggio2);
+        }else{
+            System.out.println("Ha vinto "+nome2+" con un punteggio di "+punteggio2+" a "+punteggio1);
+        }
     }
 }

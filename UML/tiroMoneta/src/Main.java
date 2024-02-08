@@ -2,17 +2,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Giocatore giocatore = new Giocatore("", 0);
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Inserisci il nome del primo giocatore: ");
-        String nomeGiocatore1 = sc.nextLine();
-        System.out.println("Inserisci il nome del secondo giocatore: ");
-        String nomeGiocatore2 = sc.nextLine();
+        Giocatore giocatore1 = new Giocatore("", 0);
+        Giocatore giocatore2 = new Giocatore("", 0);
 
-        if(giocatore.calcoloVincitore(nomeGiocatore1,nomeGiocatore2)){
-            System.out.println("Ha vinto "+nomeGiocatore1);
-        }else{
-            System.out.println("Ha vinto "+nomeGiocatore2);
-        }
-}   }
+        String[] nuoviNomi = giocatore1.inserisciGiocatori();
+        giocatore1.setNome(nuoviNomi[0]);
+        giocatore2.setNome(nuoviNomi[1]);
+
+        int[] nuoviPunteggi = giocatore1.calcoloVincitore(giocatore1.getPunteggio(), giocatore2.getPunteggio());
+        giocatore1.setPunteggio(nuoviPunteggi[0]);
+        giocatore2.setPunteggio(nuoviPunteggi[1]);
+
+        giocatore1.stampaRisultato(giocatore1.getNome(), giocatore2.getNome(), giocatore1.getPunteggio(), giocatore2.getPunteggio());
+    }
+}

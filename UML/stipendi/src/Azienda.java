@@ -22,7 +22,7 @@ public class Azienda {
 
     public void calcolaStipendi() {
         Mese gennaio = new Mese("Gennaio", 31, 6);
-        float totStipendioDip1 = dip1.fissoMensile+80+12*dip1.numeroOreGiornaliere+160*dip1.numeroDomeniche;
+         float totStipendioDip1 = dip1.fissoMensile+80+12*dip1.numeroOreGiornaliere+160*dip1.numeroDomeniche;
         float totStipendioDip2 = dip2.fissoMensile+80+12*dip2.numeroOreGiornaliere+160*dip2.numeroDomeniche;
         float totStipendioDip3 = dip3.fissoMensile+80+12*dip3.numeroOreGiornaliere+160*dip3.numeroDomeniche;
 
