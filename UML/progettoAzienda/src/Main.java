@@ -14,8 +14,8 @@ public class Main {
             System.out.println("SEGRETERIA AZIENDA");
             System.out.println("0. Esci");
             System.out.println("1. Inserire dipendente");
-            System.out.println("2. Visualizza dipendenti");
-            System.out.println("3. Calcolo stipendio netto");
+            System.out.println("2. Visualizza info dipendenti");
+            System.out.println("3. Calcolo stipendio lordo e netto");
             System.out.println("Inserisci la tua scelta ->");
             System.out.println("---------------------------");
             scelta = in.nextInt();

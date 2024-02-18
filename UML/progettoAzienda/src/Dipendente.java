@@ -9,8 +9,9 @@ public class Dipendente {
     private int id;
     private int oreLavorate;
     private double stipendioNetto;
+    private double stipendioLordo;
 
-    public Dipendente(int xId,String xNome, String xCognome, String xDataNascita, String xVia, String xCitta, int xOreLavorate, double xStipendioNetto){
+    public Dipendente(int xId,String xNome, String xCognome, String xDataNascita, String xVia, String xCitta, int xOreLavorate, double xStipendioNetto, double xStipendioLordo){
         this.id = xId;
         this.nome = xNome;
         this.cognome = xCognome;
@@ -19,6 +20,7 @@ public class Dipendente {
         this.citta = xCitta;
         this.oreLavorate = xOreLavorate;
         this.stipendioNetto = xStipendioNetto;
+        this.stipendioLordo = xStipendioLordo;
     }
 
     public int getId() {return id;}
@@ -42,8 +44,16 @@ public class Dipendente {
         return stipendioNetto;
     }
 
+    public double getStipendioLordo() {
+        return stipendioLordo;
+    }
+
     public void setStipendioNetto(double stipendioNetto) {
         this.stipendioNetto = stipendioNetto;
+    }
+
+    public void setStipendioLordo(double stipendioLordo) {
+        this.stipendioLordo = stipendioLordo;
     }
 
     public void setOreLavorate(int oreLavorate) {
@@ -52,7 +62,7 @@ public class Dipendente {
 
     @Override public String toString()
     {
-        String st = "id:"+getId()+" - nome:"+" "+getNome()+" - cognome:"+getCognome()+" - data di nascita:"+getDataNascita()+" - via:"+getVia()+" - città:"+getCitta()+" - ore lavorative:"+getOreLavorate()+" - stipendio netto:"+getStipendioNetto()+"$";
+        String st = "id:"+getId()+" - nome:"+getNome()+" - cognome:"+getCognome()+" - data di nascita:"+getDataNascita()+" - via:"+getVia()+" - città:"+getCitta()+" - ore lavorative:"+getOreLavorate()+" - stipendio netto:"+getStipendioNetto()+"$"+" - stipendio lordo:"+getStipendioLordo()+"$";
         return st;
     }
 }

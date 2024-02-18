@@ -1,8 +1,9 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Azienda {
     private double pagaOraria = 9.00f;
-private int tax = 22 / 100;
+private double tax = 0.22f;
 static int max = 10;
 private int id = 0;
 
@@ -11,18 +12,23 @@ private  Dipendente libroDip[] = new Dipendente[max];
     public Azienda()
     {
         for (int i = 0; i < max; ++i) {
-                libroDip[i] = new Dipendente(0, "", "", "", "", "", 0,0);
+                libroDip[i] = new Dipendente(0, "", "", "", "", "", 0,0,0);
         }
     }
 
     public void stampaDipendenti() {
-
+        boolean vuoto = true;
         for (int i = 0; i<max; ++i)
         {
             if(libroDip[i].getId()==0){
             }else{
                 System.out.println(libroDip[i].toString());
+                vuoto = false;
             }
+        }
+
+        if(vuoto == true){
+            System.out.println("Nessun dipendente inserito!!!");
         }
     }
 
@@ -30,11 +36,12 @@ private  Dipendente libroDip[] = new Dipendente[max];
         String nome, cognome, dataNascita, via, citta;
         boolean pieno = false;
         int i;
+        Random rand = new Random();
 
         for (i = 0; i < max && pieno == false; ++i)
         {
             if(libroDip[i].getNome() == "") {
-                int id = i + 1;
+                int id = rand.nextInt(100000,999999);
                 pieno = true;
                 Scanner in = new Scanner(System.in);
                 System.out.print("Inserire il nome: ");
@@ -47,7 +54,7 @@ private  Dipendente libroDip[] = new Dipendente[max];
                 via = in.nextLine();
                 System.out.print("Inserire la città: ");
                 citta = in.nextLine();
-                Dipendente a = new Dipendente(id, nome, cognome, dataNascita, via, citta, 0, 0);
+                Dipendente a = new Dipendente(id, nome, cognome, dataNascita, via, citta, 0, 0,0);
                 libroDip[i] = a;
             }
         }
@@ -61,8 +68,8 @@ private  Dipendente libroDip[] = new Dipendente[max];
         System.out.print("Inserire l'id del dipendente al quale calcolare lo stipendio: ");
         id = in.nextInt();
 
-        while(id == 0){
-            System.out.print("Gli id partono dal numero 1, re-inserisci: ");
+        while(id < 100000 || id > 999999){
+            System.out.print("Gli id hanno 6 cifre, re-inseriscilo: ");
             id = in.nextInt();
         }
 
@@ -73,8 +80,9 @@ private  Dipendente libroDip[] = new Dipendente[max];
                 System.out.print("Inserisci le ore lavorative:");
                 oreLavorative = in.nextInt();
                 libroDip[i].setOreLavorate(oreLavorative);
-                stipendioLordo = oreLavorative * pagaOraria;
-                stipendioNetto = stipendioLordo - (stipendioLordo * tax);
+                stipendioLordo = Math.round((oreLavorative * pagaOraria) * 100.0) / 100.0;
+                libroDip[i].setStipendioLordo(stipendioLordo);
+                stipendioNetto = Math.round((stipendioLordo - (stipendioLordo * tax)) * 100.0) / 100.0;
                 libroDip[i].setStipendioNetto(stipendioNetto);
                 trovato = true;
             }
