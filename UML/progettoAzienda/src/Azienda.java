@@ -12,7 +12,7 @@ private  Dipendente libroDip[] = new Dipendente[max];
     public Azienda()
     {
         for (int i = 0; i < max; ++i) {
-                libroDip[i] = new Dipendente(0, "", "", "", "", "", 0,0,0);
+            libroDip[i] = new Dipendente(0, "", "", "", "", "", 0,0,0);
         }
     }
 

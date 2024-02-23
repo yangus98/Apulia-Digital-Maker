@@ -4,9 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Azienda a = new Azienda();
 
-        System.out.println("Inserisci il dipendente: ");
-
-
         Scanner in = new Scanner(System.in);
         int scelta;
         do {
@@ -33,6 +30,5 @@ public class Main {
                     break;
             }
         } while (scelta != 0);
-
     }
 }
