@@ -22,6 +22,10 @@ public class Azienda {
             System.out.println("Inserisci il cognome");
             String cognome = sc.nextLine();
             System.out.println("Inserisci gli anni di servizio");
+            while(!sc.hasNextInt()){
+                System.out.println("Valore non valido, inserisci un numero intero!");
+                sc.next();
+            }
             int anniServizio = sc.nextInt();
             int id = rand.nextInt(100000,999999);
             double stipendioNetto = 0.00;
@@ -33,6 +37,10 @@ public class Azienda {
             System.out.println("Inserisci il cognome");
             String cognome = sc.nextLine();
             System.out.println("Inserisci gli anni di servizio");
+            while(!sc.hasNextInt()){
+                System.out.println("Valore non valido, inserisci un numero intero!");
+                sc.next();
+            }
             int anniServizio = sc.nextInt();
             int id = rand.nextInt(100000,999999);
             double stipendioNetto = 0.00;
@@ -44,6 +52,10 @@ public class Azienda {
             System.out.println("Inserisci il cognome");
             String cognome = sc.nextLine();
             System.out.println("Inserisci gli anni di servizio");
+            while(!sc.hasNextInt()){
+                System.out.println("Valore non valido, inserisci un numero intero!");
+                sc.next();
+            }
             int anniServizio = sc.nextInt();
             int id = rand.nextInt(100000,999999);
             double stipendioNetto = 0.00;
@@ -52,7 +64,7 @@ public class Azienda {
             return new Dirigente(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto, premioProduzione);
         } else {
             System.out.println("Tipologia non valida.");
-            return null;
+            return new Dipendente("","",0,0,0,0);
         }
     }
 
@@ -62,6 +74,10 @@ public class Azienda {
         System.out.println("Inserisci il cognome");
         String cognome = sc.nextLine();
         System.out.println("Inserisci le ore di stage");
+        while(!sc.hasNextInt()){
+            System.out.println("Valore non valido, inserisci un numero intero!");
+            sc.next();
+        }
         int oreStage = sc.nextInt();
         int id = rand.nextInt(100000,999999);
         return new Stagista(nome, cognome, id, oreStage);
@@ -89,6 +105,9 @@ public class Azienda {
     }
 
     public void visualizzaDipendenti(){
+
+        listaDip.removeIf(oggetto -> oggetto.getId() == 0);
+
         for (Dipendente dipendente : listaDip) {
             System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Anni di servizio: "+ dipendente.getAnniServizio());
         }
@@ -125,6 +144,10 @@ public class Azienda {
 
     public void licenziaDipendente(){
         System.out.println("Inserisci l'id del dipendente da licenziare");
+        while(!sc.hasNextInt()){
+            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+            sc.next();
+        }
         int sceltaId = sc.nextInt();
         for (int i = 0; i < listaDip.size(); i++) {
             Dipendente dipendente = listaDip.get(i);
@@ -139,6 +162,10 @@ public class Azienda {
 
     public void licenziaStagista(){
         System.out.println("Inserisci l'id dello stagista da licenziare");
+        while(!sc.hasNextInt()){
+            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+            sc.next();
+        }
         int sceltaIdStag = sc.nextInt();
         for (int i = 0; i < listaStag.size(); i++) {
             Stagista stagista = listaStag.get(i);
@@ -151,6 +178,10 @@ public class Azienda {
 
     public void modificaDipendente(){
         System.out.println("Inserisci l'id del dipendente da modificare");
+        while(!sc.hasNextInt()){
+            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+            sc.next();
+        }
         int sceltaId = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < listaDip.size(); i++) {
@@ -171,6 +202,10 @@ public class Azienda {
                     dipendente.setCognome(cognomeMod);
                 } else if ("a".equals(sceltaMod)) {
                     System.out.println("Inserisci gli anni di anzianità da modificare");
+                    while(!sc.hasNextInt()){
+                        System.out.println("Valore non valido, inserisci un numero intero!");
+                        sc.next();
+                    }
                     int anniMod = sc.nextInt();
                     sc.nextLine();
                     dipendente.setAnniServizio(anniMod);
@@ -183,6 +218,10 @@ public class Azienda {
 
     public void modificaStagista(){
         System.out.println("Inserisci l'id dello stagista da modificare");
+        while(!sc.hasNextInt()){
+            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+            sc.next();
+        }
         int sceltaIdStag = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < listaStag.size(); i++) {
@@ -203,6 +242,10 @@ public class Azienda {
                     stagista.setCognome(cognomeMod);
                 } else if("o".equals(sceltaMod)) {
                     System.out.println("Inserisci le ore stage da modificare");
+                    while(!sc.hasNextInt()){
+                        System.out.println("Valore non valido, inserisci un numero intero!");
+                        sc.next();
+                    }
                     int stageMod = sc.nextInt();
                     sc.nextLine();
                     stagista.setOreStage(stageMod);

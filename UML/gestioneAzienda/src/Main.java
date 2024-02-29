@@ -53,7 +53,7 @@ public class Main {
                         if(dipendente instanceof CEO){
                             ((CEO) dipendente).calcolaStipendio();
                         } else if (dipendente instanceof Dirigente) {
-                            System.out.println("Inserisci il premio produzione di "+dipendente.getNome()+" "+dipendente.getCognome());
+                            System.out.println("Inserisci il premio produzione del dirigente "+dipendente.getNome()+" "+dipendente.getCognome());
                             double premio = in.nextDouble();
                             ((Dirigente) dipendente).setPremioProduzione(premio);
                             ((Dirigente) dipendente).calcolaStipendio();
