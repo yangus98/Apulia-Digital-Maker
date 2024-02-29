@@ -54,7 +54,7 @@ public class Azienda {
                 sc.next();
             }
             int anniServizio = sc.nextInt();
-            int id = rand.nextInt(100000,999999);
+            int id = rand.nextInt(100001,999999);
             double stipendioNetto = 0.00;
             double stipendioLordo = 30000.00;
             String ruolo = "N";
@@ -70,7 +70,7 @@ public class Azienda {
                 sc.next();
             }
             int anniServizio = sc.nextInt();
-            int id = rand.nextInt(100000,999999);
+            int id = rand.nextInt(100001,999999);
             double stipendioNetto = 0.00;
             double stipendioLordo = 40000.00;
             String ruolo = "P";
@@ -86,7 +86,7 @@ public class Azienda {
                 sc.next();
             }
             int anniServizio = sc.nextInt();
-            int id = rand.nextInt(100000,999999);
+            int id = rand.nextInt(100001,999999);
             double stipendioNetto = 0.00;
             double stipendioLordo = 70000.00;
             double premioProduzione = 0.00;
@@ -109,7 +109,7 @@ public class Azienda {
             sc.next();
         }
         int oreStage = sc.nextInt();
-        int id = rand.nextInt(100000,999999);
+        int id = rand.nextInt(100001,999999);
         return new Stagista(nome, cognome, id, oreStage);
     }
 
@@ -175,10 +175,15 @@ public class Azienda {
     public void licenziaDipendente(){
         System.out.println("Inserisci l'id del dipendente da licenziare");
         while(!sc.hasNextInt()){
-            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+            System.out.println("Valore non valido, inserisci un numero intero!");
             sc.next();
         }
         int sceltaId = sc.nextInt();
+        while(sceltaId < 100001 | sceltaId > 999999){
+            System.out.println("Il valore deve essere compreso da 100001 a 999999");
+            sceltaId = sc.nextInt();
+        }
+
         for (int i = 0; i < listaDip.size(); i++) {
             Dipendente dipendente = listaDip.get(i);
             if (sceltaId == dipendente.getId()) {
@@ -186,7 +191,6 @@ public class Azienda {
                 System.out.println("Dipendente licenziato con successo.");
             }
         }
-        System.out.println("Nessun dipendente trovato con l'id specificato.");
     }
 
     public void licenziaStagista(){
