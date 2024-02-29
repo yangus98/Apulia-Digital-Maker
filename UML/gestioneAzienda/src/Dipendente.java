@@ -28,7 +28,7 @@ public class Dipendente {
     }
 
     public void calcolaStipendio(){
-        setStipendioNetto(stipendioLordo - (stipendioLordo * 0.34));
+        setStipendioNetto((stipendioLordo - (stipendioLordo * 0.34))*2);
     }
 
     public int getAnniServizio() {
