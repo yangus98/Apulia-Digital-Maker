@@ -5,14 +5,16 @@ public class Dipendente {
     private int anniServizio;
     private double stipendioLordo;
     private double stipendioNetto;
+    private String ruolo;
 
-    Dipendente(String nome, String cognome, int id, int anniServizio, double stipendioLordo, double stipendioNetto){
+    Dipendente(String nome, String cognome, int id, int anniServizio, double stipendioLordo, double stipendioNetto, String ruolo){
         this.nome = nome;
         this.cognome = cognome;
         this.id = id;
         this.anniServizio = anniServizio;
         this.stipendioLordo = stipendioLordo;
         this.stipendioNetto = stipendioNetto;
+        this.ruolo = ruolo;
     }
 
     public double getStipendioNetto() {
@@ -57,5 +59,13 @@ public class Dipendente {
 
     public void setAnniServizio(int anniServizio) {
         this.anniServizio = anniServizio;
+    }
+
+    public String getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
     }
 }

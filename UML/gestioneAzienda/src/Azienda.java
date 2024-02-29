@@ -30,7 +30,8 @@ public class Azienda {
             int id = rand.nextInt(100000,999999);
             double stipendioNetto = 0.00;
             double stipendioLordo = 30000.00;
-            return new NeoAssunto(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto);
+            String ruolo = "N";
+            return new NeoAssunto(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto,ruolo);
         } else if ("p".equals(tipo)) {
             System.out.println("Inserisci il nome");
             String nome = sc.nextLine();
@@ -45,7 +46,8 @@ public class Azienda {
             int id = rand.nextInt(100000,999999);
             double stipendioNetto = 0.00;
             double stipendioLordo = 40000.00;
-            return new Progettista(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto);
+            String ruolo = "P";
+            return new Progettista(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto,ruolo);
         } else if ("d".equals(tipo)) {
             System.out.println("Inserisci il nome");
             String nome = sc.nextLine();
@@ -61,10 +63,11 @@ public class Azienda {
             double stipendioNetto = 0.00;
             double stipendioLordo = 70000.00;
             double premioProduzione = 0.00;
-            return new Dirigente(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto, premioProduzione);
+            String ruolo = "D";
+            return new Dirigente(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto, premioProduzione, ruolo);
         } else {
             System.out.println("Tipologia non valida.");
-            return new Dipendente("","",0,0,0,0);
+            return new Dipendente("","",0,0,0,0,"");
         }
     }
 
@@ -109,7 +112,7 @@ public class Azienda {
         listaDip.removeIf(oggetto -> oggetto.getId() == 0);
 
         for (Dipendente dipendente : listaDip) {
-            System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Anni di servizio: "+ dipendente.getAnniServizio());
+            System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Anni di servizio: "+ dipendente.getAnniServizio()+" - Ruolo: "+ dipendente.getRuolo());
         }
     }
 
@@ -134,7 +137,7 @@ public class Azienda {
                     // Rimuovi dalla lista degli stagisti
                     listaStag.remove(stagista);
                     // Aggiungi alla lista dei dipendenti
-                    listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0));
+                    listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0,"N"));
                 }
             }
         } else {

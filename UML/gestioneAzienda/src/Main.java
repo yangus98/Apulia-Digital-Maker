@@ -4,11 +4,11 @@ public class Main {
     public static void main(String[] args) {
         Azienda a = new Azienda();
         // data entry
-        a.listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0));
-        a.listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0));
-        a.listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0));
-        a.listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0));
-        a.listaDip.add(new Progettista("Ajeje","Brazorf", 100010,40,40000,0));
+        a.listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0,"C"));
+        a.listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0,"D"));
+        a.listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0,"D"));
+        a.listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0,"D"));
+        a.listaDip.add(new Progettista("Ajeje","Brazorf", 100010,40,40000,0,"P"));
 
         a.listaStag.add(new Stagista("Ugo","Fantozzi",100200,100));
         a.listaStag.add(new Stagista("Antonio","Lo Conte",134220,70));
