@@ -3,15 +3,42 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Azienda {
+    private int notificaDip;
+    private int notificaStag;
+
     ArrayList<Dipendente> listaDip = new ArrayList<Dipendente>();
     ArrayList<Stagista> listaStag = new ArrayList<Stagista>();
 
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
 
-    private int notificaDip;
-    private int notificaStag;
+    public int getNotificaDip() {
+        return notificaDip;
+    }
 
+    public void setNotificaDip(int notificaDip) {
+        this.notificaDip = notificaDip;
+    }
+
+    public int getNotificaStag() {
+        return notificaStag;
+    }
+
+    public void setNotificaStag(int notificaStag) {
+        this.notificaStag = notificaStag;
+    }
+
+    public void dataEntries(){
+        listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0,"C"));
+        listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0,"D"));
+        listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0,"D"));
+        listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0,"D"));
+        listaDip.add(new Progettista("Ajeje","Brazorf", 100010,40,40000,0,"P"));
+
+        listaStag.add(new Stagista("Ugo","Fantozzi",100200,100));
+        listaStag.add(new Stagista("Antonio","Lo Conte",134280,70));
+        listaStag.add(new Stagista("Michele","Fiorillo",167220,80));
+    }
     public Dipendente registraDipendente() {
         System.out.println("Inserisci la tipologia di dipendente: n(neo assunto) - p(progettista) - d(dirigente) ");
         String tipo = sc.nextLine();
@@ -256,22 +283,6 @@ public class Azienda {
                 }
             }
         }
-    }
-
-    public int getNotificaDip() {
-        return notificaDip;
-    }
-
-    public void setNotificaDip(int notificaDip) {
-        this.notificaDip = notificaDip;
-    }
-
-    public int getNotificaStag() {
-        return notificaStag;
-    }
-
-    public void setNotificaStag(int notificaStag) {
-        this.notificaStag = notificaStag;
     }
 
     public void controlloNotifiche(){

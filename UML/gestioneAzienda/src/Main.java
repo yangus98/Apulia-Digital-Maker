@@ -3,16 +3,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Azienda a = new Azienda();
-        // data entry
-        a.listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0,"C"));
-        a.listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0,"D"));
-        a.listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0,"D"));
-        a.listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0,"D"));
-        a.listaDip.add(new Progettista("Ajeje","Brazorf", 100010,40,40000,0,"P"));
 
-        a.listaStag.add(new Stagista("Ugo","Fantozzi",100200,100));
-        a.listaStag.add(new Stagista("Antonio","Lo Conte",134220,70));
-        a.listaStag.add(new Stagista("Michele","Fiorillo",167220,80));
+        a.dataEntries();
 
         Scanner in = new Scanner(System.in);
         int scelta;
@@ -21,23 +13,24 @@ public class Main {
             System.out.println("GESTIONE AZIENDA");
             System.out.println("---------------------------");
             System.out.println("ZONA DIPENDENTI");
-            System.out.println("1. Registra dipendente");
-            System.out.println("2. Visualizza info dipendenti");
-            System.out.println("3. Calcolo stipendio lordo e netto");
-            System.out.println("4. Gestisci pensionandi");
-            System.out.println("5. Modifica dipendente");
-            System.out.println("6. Licenzia dipendente");
+            System.out.println("1.  Registra dipendente");
+            System.out.println("2.  Visualizza dipendenti");
+            System.out.println("3.  Visualizza stipendi lordi e netti");
+            System.out.println("4.  Gestisci pensionandi");
+            System.out.println("5.  Modifica dipendente");
+            System.out.println("6.  Licenzia dipendente");
             System.out.println("---------------------------");
             System.out.println("ZONA STAGISTI");
-            System.out.println("7. Registra stagisti");
-            System.out.println("8. Visualizza stagisti");
-            System.out.println("9. Assunzione stagisti");
-            System.out.println("10. Cancella stagisti");
+            System.out.println("7.  Registra stagista");
+            System.out.println("8.  Visualizza stagisti");
+            System.out.println("9.  Assunzione stagista");
+            System.out.println("10. Cancella stagista");
             System.out.println("11. Modifica stagista");
             System.out.println("12. Licenzia stagisti che non hanno superato lo stage");
             System.out.println("---------------------------");
-            System.out.println("0. Esci");
+            System.out.println("0.  Esci");
             System.out.println("---------------------------");
+            System.out.println("NOTIFICHE");
             a.controlloNotifiche();
 
             scelta = in.nextInt();

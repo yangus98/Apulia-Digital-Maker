@@ -64,8 +64,4 @@ public class Dipendente {
     public String getRuolo() {
         return ruolo;
     }
-
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
-    }
 }
