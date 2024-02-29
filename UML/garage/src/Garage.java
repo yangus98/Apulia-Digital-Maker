@@ -178,7 +178,7 @@ public class Garage {
                 if (posti[i].getId() == 0)
                 {
                     parcheggiato = true;
-                    int id = i + 1;
+
                     System.out.print("Inserire la targa: ");
                     targa = in.next();
                     System.out.print("Inserire l'ora di arrivo: ");
