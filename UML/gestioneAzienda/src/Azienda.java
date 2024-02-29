@@ -156,7 +156,6 @@ public class Azienda {
                 System.out.println("Dipendente licenziato con successo.");
             }
         }
-
         System.out.println("Nessun dipendente trovato con l'id specificato.");
     }
 
@@ -288,8 +287,8 @@ public class Azienda {
             }
         }
 
-        System.out.println("[ Hai " + notificaDip+" notifiche da controllare per il pensionamento.]");
-        System.out.println("[ Hai " + notificaStag+" notifiche da controllare per l'assunzione dei stagisti.]");
+        System.out.println("[ Hai " + getNotificaDip()+" notifiche da controllare per il pensionamento.]");
+        System.out.println("[ Hai " + getNotificaStag()+" notifiche da controllare per l'assunzione dei stagisti.]");
     }
 
     public void licenziaStagistaInBlocco() {

@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Azienda a = new Azienda();
         // data entry
-        a.listaDip.add(new CEO("Domenico","Barracane",100000,10,130000,0));
+        a.listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0));
         a.listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0));
         a.listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0));
         a.listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0));
@@ -53,7 +53,8 @@ public class Main {
                         if(dipendente instanceof CEO){
                             ((CEO) dipendente).calcolaStipendio();
                         } else if (dipendente instanceof Dirigente) {
-                            System.out.println("Inserisci il premio produzione del dirigente "+dipendente.getNome()+" "+dipendente.getCognome());
+                            System.out.println("Inserisci il premio produzione del dirigente "
+                                    +dipendente.getNome()+" "+dipendente.getCognome());
                             double premio = in.nextDouble();
                             ((Dirigente) dipendente).setPremioProduzione(premio);
                             ((Dirigente) dipendente).calcolaStipendio();
