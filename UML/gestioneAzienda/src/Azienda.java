@@ -189,6 +189,8 @@ public class Azienda {
             if (sceltaId == dipendente.getId()) {
                 listaDip.remove(i); // Rimuovi l'oggetto corrispondente
                 System.out.println("Dipendente licenziato con successo.");
+            }else{
+                System.out.println("Dipendente non licenziato.");
             }
         }
     }
@@ -204,7 +206,9 @@ public class Azienda {
             Stagista stagista = listaStag.get(i);
             if (sceltaIdStag == stagista.getId()) {
                 listaStag.remove(i); // Rimuovi l'oggetto corrispondente
-                System.out.println("Dipendente licenziato con successo.");
+                System.out.println("Stagista licenziato con successo.");
+            }else{
+                System.out.println("Stagista non licenziato.");
             }
         }
     }
@@ -229,10 +233,12 @@ public class Azienda {
                     System.out.println("Inserisci il nome da modificare");
                     String nomeMod = sc.nextLine();
                     dipendente.setNome(nomeMod);
+                    System.out.println("Dipendente modificato!");
                 } else if ("c".equals(sceltaMod)) {
                     System.out.println("Inserisci il cognome da modificare");
                     String cognomeMod = sc.nextLine();
                     dipendente.setCognome(cognomeMod);
+                    System.out.println("Dipendente modificato!");
                 } else if ("a".equals(sceltaMod)) {
                     System.out.println("Inserisci gli anni di anzianità da modificare");
                     while(!sc.hasNextInt()){
@@ -242,6 +248,7 @@ public class Azienda {
                     int anniMod = sc.nextInt();
                     sc.nextLine();
                     dipendente.setAnniServizio(anniMod);
+                    System.out.println("Dipendente modificato!");
                 } else {
                     System.out.println("Non hai modificato nulla!");
                 }
@@ -269,10 +276,12 @@ public class Azienda {
                     System.out.println("Inserisci il nome da modificare");
                     String nomeMod = sc.nextLine();
                     stagista.setNome(nomeMod);
+                    System.out.println("Stagista modificato!");
                 } else if("c".equals(sceltaMod)) {
                     System.out.println("Inserisci il cognome da modificare");
                     String cognomeMod = sc.nextLine();
                     stagista.setCognome(cognomeMod);
+                    System.out.println("Stagista modificato!");
                 } else if("o".equals(sceltaMod)) {
                     System.out.println("Inserisci le ore stage da modificare");
                     while(!sc.hasNextInt()){
@@ -282,6 +291,7 @@ public class Azienda {
                     int stageMod = sc.nextInt();
                     sc.nextLine();
                     stagista.setOreStage(stageMod);
+                    System.out.println("Stagista modificato!");
                 } else {
                     System.out.println("Non hai modificato nulla!");
                 }
