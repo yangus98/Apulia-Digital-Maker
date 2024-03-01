@@ -315,8 +315,6 @@ public class Azienda {
             Stagista stagista = listaStag.get(i);
             if (stagista.getOreStage() < 100) {
                 System.out.println(stagista.getNome() + " " + stagista.getCognome() + " può essere licenziato.");
-                // Rimuovi dagli stagisti direttamente dalla lista
-                listaStag.remove(i);
             }
         }
 
@@ -325,6 +323,13 @@ public class Azienda {
         String rispostaLicenziaStag = sc.nextLine();
 
         if (rispostaLicenziaStag.equalsIgnoreCase("s")) {
+            for (int i = listaStag.size() - 1; i >= 0; i--) {
+                Stagista stagista = listaStag.get(i);
+                if (stagista.getOreStage() < 100) {
+                    listaStag.remove(i);
+                }
+            }
+
             System.out.println("Stagisti licenziati!");
         } else {
             System.out.println("Licenziamento degli stagisti annullato!");
