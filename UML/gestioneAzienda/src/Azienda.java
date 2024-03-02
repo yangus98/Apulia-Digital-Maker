@@ -38,6 +38,7 @@ public class Azienda {
         listaStag.add(new Stagista("Ugo","Fantozzi",100200,100));
         listaStag.add(new Stagista("Antonio","Lo Conte",134280,70));
         listaStag.add(new Stagista("Michele","Fiorillo",167220,80));
+        listaStag.add(new Stagista("Francesco","Rella",128760,100));
     }
     public Dipendente registraDipendente() {
         System.out.println("Inserisci la tipologia di dipendente: n(neo assunto) - p(progettista) - d(dirigente) ");
@@ -114,23 +115,30 @@ public class Azienda {
     }
 
     public void pensionamentoDipendente(){
+        boolean trovato = false;
+
         for (Dipendente dipendente : listaDip) {
             if (dipendente.getAnniServizio() > 35) {
                 System.out.println(dipendente.getNome()+" "+dipendente.getCognome() + " può andare in pensione.");
+                trovato = true;
             }
         }
 
-        System.out.println("Vuoi cancellare i dipendenti pensionabili? s/n");
-        String rispostaCancPens = sc.nextLine();
-        if ("s".equalsIgnoreCase(rispostaCancPens)) {
-            for (int i = listaDip.size() - 1; i >= 0; i--) {
-                if (listaDip.get(i).getAnniServizio() > 35) {
-                    listaDip.remove(i);
+        if(trovato == false){
+            System.out.println("Nessun dipendente può andare in pensione!");
+        }else{
+            System.out.println("Vuoi cancellare i dipendenti pensionabili? s/n");
+            String rispostaCancPens = sc.nextLine();
+            if ("s".equalsIgnoreCase(rispostaCancPens)) {
+                for (int i = listaDip.size() - 1; i >= 0; i--) {
+                    if (listaDip.get(i).getAnniServizio() > 35) {
+                        listaDip.remove(i);
+                    }
                 }
+                System.out.println("Dipendenti pensionabili cancellati con successo.");
+            } else {
+                System.out.println("Nessun dipendente cancellato.");
             }
-            System.out.println("Dipendenti pensionabili cancellati con successo.");
-        } else {
-            System.out.println("Nessun dipendente cancellato.");
         }
     }
 
@@ -141,34 +149,53 @@ public class Azienda {
         for (Dipendente dipendente : listaDip) {
             System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Anni di servizio: "+ dipendente.getAnniServizio()+" - Ruolo: "+ dipendente.getRuolo());
         }
+
+        if(listaDip.isEmpty()){
+            System.out.println("Lista dipendenti vuota!");
+        }
     }
 
     public void visualizzaStagisti(){
         for (Stagista stagista : listaStag) {
             System.out.println("Nome: "+stagista.getNome() +" - Cognome: "+ stagista.getCognome()+" - Id: "+stagista.getId() +" - Ore di stage: "+ stagista.getOreStage());
         }
+
+        if(listaStag.isEmpty()){
+            System.out.println("Lista stagisti vuota!");
+        }
     }
 
-    public void assumiStagista(){
-        for (Stagista stagista : listaStag) {
+    public void assumiStagista() {
+        boolean trovato = false;
+
+        for (int i = listaStag.size() - 1; i >= 0; i--) {
+            Stagista stagista = listaStag.get(i);
             if (stagista.getOreStage() >= 100) {
-                System.out.println(stagista.getNome() + " può essere assunto.");
+                System.out.println(stagista.getNome() + " " + stagista.getCognome() + " può essere assunto.");
+                trovato = true;
             }
         }
 
-        System.out.println("Vuoi assumere gli stagisti? s/n");
-        String rispostaAssumiStag = sc.nextLine();
-        if (rispostaAssumiStag.equalsIgnoreCase("s")) {
-            for (Stagista stagista : listaStag) {
-                if (stagista.getOreStage() >= 100) {
-                    // Rimuovi dalla lista degli stagisti
-                    listaStag.remove(stagista);
-                    // Aggiungi alla lista dei dipendenti
-                    listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0,"N"));
+        if(trovato == false){
+            System.out.println("Nessun stagista può essere assunto!");
+        }else{
+            System.out.println("Vuoi assumere gli stagisti? s/n");
+            String rispostaAssumiStag = sc.nextLine();
+
+            if (rispostaAssumiStag.equalsIgnoreCase("s")) {
+                for (int i = listaStag.size() - 1; i >= 0; i--) {
+                    Stagista stagista = listaStag.get(i);
+                    if (stagista.getOreStage() >= 100) {
+                        // Rimuovi dalla lista degli stagisti
+                        listaStag.remove(i);
+                        // Aggiungi alla lista dei dipendenti
+                        listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0, "N"));
+                    }
                 }
+                System.out.println("Stagisti assunti con successo!");
+            } else {
+                System.out.println("Stagisti non assunti!");
             }
-        } else {
-            System.out.println("Stagisti non assunti!");
         }
     }
 
@@ -187,10 +214,7 @@ public class Azienda {
         for (int i = 0; i < listaDip.size(); i++) {
             Dipendente dipendente = listaDip.get(i);
             if (sceltaId == dipendente.getId()) {
-                listaDip.remove(i); // Rimuovi l'oggetto corrispondente
-                System.out.println("Dipendente licenziato con successo.");
-            }else{
-                System.out.println("Dipendente non licenziato.");
+                listaDip.remove(i);
             }
         }
     }
@@ -315,34 +339,39 @@ public class Azienda {
             }
         }
 
-        System.out.println("[ Hai " + getNotificaDip()+" notifiche da controllare per il pensionamento.]");
-        System.out.println("[ Hai " + getNotificaStag()+" notifiche da controllare per l'assunzione dei stagisti.]");
+        System.out.println("[ Hai " + getNotificaDip()+" notifiche da controllare per il pensionamento dei dipendenti.]");
+        System.out.println("[ Hai " + getNotificaStag()+" notifiche da controllare per l'assunzione degli stagisti.]");
     }
 
     public void licenziaStagistaInBlocco() {
-        // Identifica gli stagisti che possono essere licenziati
+        boolean trovato = false;
+
         for (int i = listaStag.size() - 1; i >= 0; i--) {
             Stagista stagista = listaStag.get(i);
             if (stagista.getOreStage() < 100) {
                 System.out.println(stagista.getNome() + " " + stagista.getCognome() + " può essere licenziato.");
+                trovato = true;
             }
         }
 
-        // Chiedi conferma all'utente
-        System.out.println("Vuoi licenziare gli stagisti? s/n");
-        String rispostaLicenziaStag = sc.nextLine();
+        if(trovato == false){
+            System.out.println("Non ci sono stagisti da licenziare!");
+        }else{
+            System.out.println("Vuoi licenziare gli stagisti? s/n");
+            String rispostaLicenziaStag = sc.nextLine();
 
-        if (rispostaLicenziaStag.equalsIgnoreCase("s")) {
-            for (int i = listaStag.size() - 1; i >= 0; i--) {
-                Stagista stagista = listaStag.get(i);
-                if (stagista.getOreStage() < 100) {
-                    listaStag.remove(i);
+            if (rispostaLicenziaStag.equalsIgnoreCase("s")) {
+                for (int i = listaStag.size() - 1; i >= 0; i--) {
+                    Stagista stagista = listaStag.get(i);
+                    if (stagista.getOreStage() < 100) {
+                        listaStag.remove(i);
+                    }
                 }
-            }
 
-            System.out.println("Stagisti licenziati!");
-        } else {
-            System.out.println("Licenziamento degli stagisti annullato!");
+                System.out.println("Stagisti licenziati!");
+            } else {
+                System.out.println("Licenziamento degli stagisti annullato!");
+            }
         }
     }
 }

@@ -13,20 +13,20 @@ public class Main {
             System.out.println("GESTIONE AZIENDA");
             System.out.println("---------------------------");
             System.out.println("ZONA DIPENDENTI");
-            System.out.println("1.  Registra dipendente");
-            System.out.println("2.  Visualizza dipendenti");
-            System.out.println("3.  Visualizza stipendi lordi e netti");
-            System.out.println("4.  Gestisci pensionandi");
-            System.out.println("5.  Modifica dipendente");
-            System.out.println("6.  Licenzia dipendente");
+            System.out.println("1.  Registra dipendente.");
+            System.out.println("2.  Visualizza dipendenti.");
+            System.out.println("3.  Visualizza stipendi lordi e netti di dicembre.");
+            System.out.println("4.  Gestisci pensionandi.");
+            System.out.println("5.  Modifica dipendente.");
+            System.out.println("6.  Licenzia dipendente.");
             System.out.println("---------------------------");
             System.out.println("ZONA STAGISTI");
-            System.out.println("7.  Registra stagista");
-            System.out.println("8.  Visualizza stagisti");
-            System.out.println("9.  Assunzione stagista");
-            System.out.println("10. Cancella stagista");
-            System.out.println("11. Modifica stagista");
-            System.out.println("12. Licenzia stagisti che non hanno superato lo stage");
+            System.out.println("7.  Registra stagista.");
+            System.out.println("8.  Visualizza stagisti.");
+            System.out.println("9.  Assunzione stagista.");
+            System.out.println("10. Cancella stagista.");
+            System.out.println("11. Modifica stagista.");
+            System.out.println("12. Licenzia stagisti che non hanno superato lo stage.");
             System.out.println("---------------------------");
             System.out.println("0.  Esci");
             System.out.println("---------------------------");
@@ -46,8 +46,7 @@ public class Main {
                         if(dipendente instanceof CEO){
                             ((CEO) dipendente).calcolaStipendio();
                         } else if (dipendente instanceof Dirigente) {
-                            System.out.println("Inserisci il premio produzione del dirigente "
-                                    +dipendente.getNome()+" "+dipendente.getCognome());
+                            System.out.println("Inserisci il premio produzione del dirigente " +dipendente.getNome()+" "+dipendente.getCognome());
                             double premio = in.nextDouble();
                             ((Dirigente) dipendente).setPremioProduzione(premio);
                             ((Dirigente) dipendente).calcolaStipendio();
@@ -57,7 +56,7 @@ public class Main {
                             ((Progettista) dipendente).calcolaStipendio();
                         }
 
-                        System.out.println("Nome: "+dipendente.getNome() +" Cognome: "+ dipendente.getCognome()+" Id: "+dipendente.getId() +" Stipendio Lordo: "+dipendente.getStipendioLordo()+" Stipendio Netto: "+dipendente.getStipendioNetto());
+                        System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Stipendio Lordo: "+dipendente.getStipendioLordo()+" - Stipendio Netto: "+dipendente.getStipendioNetto());
                     }
                     break;
                 case 4:
