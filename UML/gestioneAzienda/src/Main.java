@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Azienda a = new Azienda();
-
+        //richiamo inserimento dip e stag
         a.dataEntries();
 
         Scanner in = new Scanner(System.in);
@@ -36,12 +36,14 @@ public class Main {
             scelta = in.nextInt();
             switch (scelta) {
                 case 1:
+                    // aggiunge l'oggetto creato dal metodo nella lista dei dip
                     a.listaDip.add(a.registraDipendente());
                     break;
                 case 2:
                     a.visualizzaDipendenti();
                     break;
                 case 3:
+                    // calcola lo stipendio in base al tipo dell'oggetto
                     for(Dipendente dipendente : a.listaDip){
                         if(dipendente instanceof CEO){
                             ((CEO) dipendente).calcolaStipendio();
@@ -69,6 +71,7 @@ public class Main {
                     a.licenziaDipendente();
                     break;
                 case 7:
+                    // aggiunge l'oggetto creato dal metodo nella lista dei stag
                     a.listaStag.add(a.registraStagista());
                     break;
                 case 8:
