@@ -233,12 +233,20 @@ public class Azienda {
 
     public void modificaDipendente(){
         System.out.println("Inserisci l'id del dipendente da modificare");
-        while(!sc.hasNextInt()){
-            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
-            sc.next();
-        }
-        int sceltaIdDip = sc.nextInt();
-        sc.nextLine();
+        int sceltaIdDip;
+
+        // Controllo dell'ID
+        do {
+            while(!sc.hasNextInt()){
+                System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+                sc.next();
+            }
+            sceltaIdDip = sc.nextInt();
+            sc.nextLine(); // Consuma il newline
+            if (sceltaIdDip < 100001 || sceltaIdDip > 999999) {
+                System.out.println("Valore non valido, inserisci un numero intero da 100001 a 999999!");
+            }
+        } while (sceltaIdDip < 100001 || sceltaIdDip > 999999);
         for (int i = 0; i < listaDip.size(); i++) {
            Dipendente dipendente = listaDip.get(i);
             if (sceltaIdDip == dipendente.getId()) {
