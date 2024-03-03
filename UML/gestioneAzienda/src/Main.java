@@ -37,7 +37,12 @@ public class Main {
             switch (scelta) {
                 case 1:
                     // aggiunge l'oggetto creato dal metodo nella lista dei dip
-                    a.listaDip.add(a.registraDipendente());
+                    Dipendente nuovoDipendente = a.registraDipendente();
+                    if (nuovoDipendente.getId() == 0) {
+                        System.out.println("Il dipendente non è stato inserito correttamente.");
+                    } else {
+                        a.listaDip.add(nuovoDipendente);
+                    }
                     break;
                 case 2:
                     a.visualizzaDipendenti();
@@ -48,7 +53,13 @@ public class Main {
                         if(dipendente instanceof CEO){
                             ((CEO) dipendente).calcolaStipendio();
                         } else if (dipendente instanceof Dirigente) {
+                            System.out.println("---------------------------");
                             System.out.println("Inserisci il premio produzione del dirigente " +dipendente.getNome()+" "+dipendente.getCognome());
+                            System.out.println("---------------------------");
+                            while (!in.hasNextDouble()) {
+                                System.out.println("Valore non valido, inserisci un numero intero o con la virgola!");
+                                in.next();
+                            }
                             double premio = in.nextDouble();
                             ((Dirigente) dipendente).setPremioProduzione(premio);
                             ((Dirigente) dipendente).calcolaStipendio();

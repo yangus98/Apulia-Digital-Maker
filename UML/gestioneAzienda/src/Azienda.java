@@ -29,13 +29,28 @@ public class Azienda {
     }
 
     public void dataEntries(){
-        //dip
+        //dipendenti
         listaDip.add(new CEO("Domenico","Barracano",100000,10,130000,0,"C"));
         listaDip.add(new Dirigente("Giuseppe","Bianconi",100001,3,70000,0,0,"D"));
         listaDip.add(new Dirigente("Davide","Dellaccio",100002,40,70000,0,0,"D"));
         listaDip.add(new Dirigente("Antonio","Campanale",100003,24,70000,0,0,"D"));
-        listaDip.add(new Progettista("Ajeje","Brazorf", 100010,40,40000,0,"P"));
-        //stag
+        listaDip.add(new Progettista("Ajeje","Brazorf", 100010,23,40000,0,"P"));
+        listaDip.add(new Progettista("Aldo","Rossi", 100010,2,40000,0,"P"));
+        listaDip.add(new Progettista("Mirko","Verdi", 153565,7,40000,0,"P"));
+        listaDip.add(new Progettista("Rosy","Gialli", 143560,18,40000,0,"P"));
+        listaDip.add(new Progettista("Marika","Neri", 123450,44,40000,0,"P"));
+        listaDip.add(new Progettista("Paola","De Amicis", 674010,22,40000,0,"P"));
+        listaDip.add(new Progettista("Simone","Manzoni", 167543,12,40000,0,"P"));
+        listaDip.add(new Progettista("Davide","Alighieri", 546740,4,40000,0,"P"));
+        listaDip.add(new Progettista("Marco","Pirandello", 653346,7,40000,0,"P"));
+        listaDip.add(new Progettista("Dario","Savoiardi", 975433,10,40000,0,"P"));
+        listaDip.add(new Progettista("Eddy","Violetti", 855675,2,40000,0,"P"));
+        listaDip.add(new Progettista("Elly","Twain", 673432,9,40000,0,"P"));
+        listaDip.add(new Progettista("Joel","Love", 233356,11,40000,0,"P"));
+        listaDip.add(new Progettista("Clara","Minardi", 624423,43,40000,0,"P"));
+        listaDip.add(new Progettista("Iggy","Law", 165432,21,40000,0,"P"));
+
+        //stagisti
         listaStag.add(new Stagista("Ugo","Fantozzi",100200,100));
         listaStag.add(new Stagista("Antonio","Lo Conte",134280,70));
         listaStag.add(new Stagista("Michele","Fiorillo",167220,80));
@@ -99,20 +114,25 @@ public class Azienda {
         }
     }
 
-    public Stagista registraStagista(){
+    public Stagista registraStagista() {
         System.out.println("Inserisci il nome");
         String nome = sc.nextLine();
         System.out.println("Inserisci il cognome");
         String cognome = sc.nextLine();
         System.out.println("Inserisci le ore di stage");
-        while(!sc.hasNextInt()){
+
+        while (!sc.hasNextInt()) {
             System.out.println("Valore non valido, inserisci un numero intero!");
             sc.next();
         }
+
         int oreStage = sc.nextInt();
-        int id = rand.nextInt(100001,999999);
+        sc.nextLine();
+
+        int id = rand.nextInt(100001, 999999);
         return new Stagista(nome, cognome, id, oreStage);
     }
+
 
     public void pensionamentoDipendente(){
         boolean trovato = false; //la uso per verificare che l'utente non visualizza nulla, se rimane falsa
@@ -135,6 +155,9 @@ public class Azienda {
                         listaDip.remove(i);
                     }
                 }
+                System.out.println("Dipendenti rimossi!");
+            }else{
+                System.out.println("Dipendenti non rimossi!");
             }
         }
     }
@@ -165,6 +188,7 @@ public class Azienda {
 
     public void assumiStagista() {
         boolean trovato = false;
+        boolean noAssunto = false;
 
         for (int i = listaStag.size() - 1; i >= 0; i--) {
             Stagista stagista = listaStag.get(i);
@@ -190,18 +214,27 @@ public class Azienda {
                         listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0, "N"));
                     }
                 }
+
+                System.out.println("Stagisti assunti");
+            }else{
+                noAssunto = true;
+            }
+
+            if(noAssunto == true){
+                System.out.println("Stagisti non assunti");
             }
         }
     }
 
-    public void licenziaDipendente(){
+    public void licenziaDipendente() {
+        boolean prova = true;
         System.out.println("Inserisci l'id del dipendente da licenziare");
-        while(!sc.hasNextInt()){
+        while (!sc.hasNextInt()) {
             System.out.println("Valore non valido, inserisci un numero intero!");
             sc.next();
         }
         int sceltaId = sc.nextInt();
-        while(sceltaId < 100001 | sceltaId > 999999){
+        while (sceltaId < 100001 | sceltaId > 999999) {
             System.out.println("Il valore deve essere compreso da 100001 a 999999");
             sceltaId = sc.nextInt();
         }
@@ -210,34 +243,52 @@ public class Azienda {
             Dipendente dipendente = listaDip.get(i);
             if (sceltaId == dipendente.getId()) {
                 listaDip.remove(i);
+
+            } else {
+               prova = false;
             }
+        }
+
+        if (prova == false) {
+            System.out.println("L'id selezionato non esiste nel libro dipendenti");
         }
     }
 
     public void licenziaStagista(){
+        boolean prova = true;
         System.out.println("Inserisci l'id dello stagista da licenziare");
-        while(!sc.hasNextInt()){
-            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+        while (!sc.hasNextInt()) {
+            System.out.println("Valore non valido, inserisci un numero intero!");
             sc.next();
         }
-        int sceltaIdStag = sc.nextInt();
+        int sceltaId = sc.nextInt();
+        while (sceltaId < 100001 | sceltaId > 999999) {
+            System.out.println("Il valore deve essere compreso da 100001 a 999999");
+            sceltaId = sc.nextInt();
+        }
+
         for (int i = 0; i < listaStag.size(); i++) {
             Stagista stagista = listaStag.get(i);
-            if (sceltaIdStag == stagista.getId()) {
-                listaStag.remove(i); // Rimuovi l'oggetto corrispondente
-            }else{
-                System.out.println("Stagista non licenziato.");
+            if (sceltaId == stagista.getId()) {
+                listaStag.remove(i);
+
+            } else {
+                prova = false;
             }
+        }
+
+        if (prova == false) {
+            System.out.println("L'id selezionato non esiste nel libro stagisti");
         }
     }
 
-    public void modificaDipendente(){
+    public void modificaDipendente() {
         System.out.println("Inserisci l'id del dipendente da modificare");
         int sceltaIdDip;
 
         // Controllo dell'ID
         do {
-            while(!sc.hasNextInt()){
+            while (!sc.hasNextInt()) {
                 System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
                 sc.next();
             }
@@ -247,71 +298,97 @@ public class Azienda {
                 System.out.println("Valore non valido, inserisci un numero intero da 100001 a 999999!");
             }
         } while (sceltaIdDip < 100001 || sceltaIdDip > 999999);
+
         for (int i = 0; i < listaDip.size(); i++) {
-           Dipendente dipendente = listaDip.get(i);
+            Dipendente dipendente = listaDip.get(i);
             if (sceltaIdDip == dipendente.getId()) {
                 System.out.println("Cosa vuoi modificare...");
                 System.out.println("n - Nome");
                 System.out.println("c - Cognome");
-                System.out.println("a - Anni di servizio");
+                System.out.println("a - Anni di lavoro");
+
                 String sceltaMod = sc.nextLine();
-                if("n".equals(sceltaMod)){
+
+                if ("n".equals(sceltaMod)) {
                     System.out.println("Inserisci il nome da modificare");
                     String nomeMod = sc.nextLine();
                     dipendente.setNome(nomeMod);
-                } else if("c".equals(sceltaMod)) {
+                } else if ("c".equals(sceltaMod)) {
                     System.out.println("Inserisci il cognome da modificare");
                     String cognomeMod = sc.nextLine();
                     dipendente.setCognome(cognomeMod);
-                } else if("a".equals(sceltaMod)) {
-                    System.out.println("Inserisci gli anni di servizio da modificare");
-                    while(!sc.hasNextInt()){
+                } else if ("a".equals(sceltaMod)) {
+                    System.out.println("Inserisci gli anni di lavoro da modificare");
+                    while (!sc.hasNextInt()) {
                         System.out.println("Valore non valido, inserisci un numero intero!");
                         sc.next();
                     }
                     int anzMod = sc.nextInt();
                     sc.nextLine();
                     dipendente.setAnniServizio(anzMod);
+                } else {
+                    System.out.println("Modifiche non effettuate");
                 }
+
+                return; // Esci dal metodo dopo aver effettuato le modifiche
             }
         }
-    }
 
-    public void modificaStagista(){
+        // Stampa il messaggio di errore solo se non hai trovato l'id cercato
+        System.out.println("Non esiste quell'id nel libro dipendenti");
+    }
+    public void modificaStagista() {
         System.out.println("Inserisci l'id dello stagista da modificare");
-        while(!sc.hasNextInt()){
-            System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
-            sc.next();
-        }
-        int sceltaIdStag = sc.nextInt();
-        sc.nextLine();
+        int sceltaIdStag;
+        boolean trovato = true;
+        // Controllo dell'ID
+        do {
+            while(!sc.hasNextInt()){
+                System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
+                sc.next();
+            }
+            sceltaIdStag = sc.nextInt();
+            sc.nextLine(); // Consuma il newline
+            if (sceltaIdStag < 100001 || sceltaIdStag > 999999) {
+                System.out.println("Valore non valido, inserisci un numero intero da 100001 a 999999!");
+            }
+        } while (sceltaIdStag < 100001 || sceltaIdStag > 999999);
         for (int i = 0; i < listaStag.size(); i++) {
             Stagista stagista = listaStag.get(i);
             if (sceltaIdStag == stagista.getId()) {
                 System.out.println("Cosa vuoi modificare...");
                 System.out.println("n - Nome");
                 System.out.println("c - Cognome");
-                System.out.println("o - Ore stage");
+                System.out.println("o - Ore di stage");
                 String sceltaMod = sc.nextLine();
-                if("n".equals(sceltaMod)){
+                if ("n".equals(sceltaMod)) {
                     System.out.println("Inserisci il nome da modificare");
                     String nomeMod = sc.nextLine();
                     stagista.setNome(nomeMod);
-                } else if("c".equals(sceltaMod)) {
+                } else if ("c".equals(sceltaMod)) {
                     System.out.println("Inserisci il cognome da modificare");
                     String cognomeMod = sc.nextLine();
                     stagista.setCognome(cognomeMod);
-                } else if("o".equals(sceltaMod)) {
-                    System.out.println("Inserisci le ore stage da modificare");
-                    while(!sc.hasNextInt()){
+                } else if ("o".equals(sceltaMod)) {
+                    System.out.println("Inserisci le ore di stage da modificare");
+                    while (!sc.hasNextInt()) {
                         System.out.println("Valore non valido, inserisci un numero intero!");
                         sc.next();
                     }
                     int stageMod = sc.nextInt();
                     sc.nextLine();
                     stagista.setOreStage(stageMod);
+                }else{
+                    System.out.println("Modifiche non effettuate");
+                    break;
                 }
+            } else {
+                trovato = false;
             }
+        }
+
+        if(trovato == false){
+            System.out.println("Non esiste quell'id nel libro stagisti");
         }
     }
 
@@ -337,6 +414,7 @@ public class Azienda {
 
     public void licenziaStagistaInBlocco() {
         boolean trovato = false;
+        boolean noLic = false;
 
         for (int i = listaStag.size() - 1; i >= 0; i--) {
             Stagista stagista = listaStag.get(i);
@@ -360,8 +438,9 @@ public class Azienda {
                     }
                 }
 
+                System.out.println("Licenziamento stagisti effettuato");
             } else {
-                System.out.println("Licenziamento degli stagisti annullato!");
+                System.out.println("Licenziamento stagisti annullato!");
             }
         }
     }
