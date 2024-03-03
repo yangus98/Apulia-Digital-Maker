@@ -58,7 +58,7 @@ public class Main {
                             ((Progettista) dipendente).calcolaStipendio();
                         }
 
-                        System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Stipendio Lordo: "+dipendente.getStipendioLordo()+" - Stipendio Netto: "+dipendente.getStipendioNetto());
+                        System.out.println("Nome: "+dipendente.getNome() +" - Cognome: "+ dipendente.getCognome()+" - Id: "+dipendente.getId() +" - Stipendio Lordo annuale: "+dipendente.getStipendioLordo()+" - Stipendio Netto di dicembre(compresa tredicesima): "+dipendente.getStipendioNetto());
                     }
                     break;
                 case 4:

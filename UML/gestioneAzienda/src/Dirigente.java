@@ -8,7 +8,7 @@ public class Dirigente extends Dipendente{
     }
     @Override
     public void calcolaStipendio(){
-        setStipendioNetto(((getStipendioLordo() - (getStipendioLordo() * 0.34)) * 2) + premioProduzione);
+        setStipendioNetto(((Math.round(((getStipendioLordo() - (getStipendioLordo()*34/100)) / 13)*2)+premioProduzione)*100)/100);
     }
 
     public void setPremioProduzione(double premioProduzione) {

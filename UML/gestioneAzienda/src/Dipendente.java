@@ -30,7 +30,7 @@ public class Dipendente {
     }
 
     public void calcolaStipendio(){
-        setStipendioNetto((stipendioLordo - (stipendioLordo * 0.34))*2);
+        setStipendioNetto(((Math.round(((getStipendioLordo() - (getStipendioLordo()*34/100)) / 13)*2))*100)/100);
     }
 
     public int getAnniServizio() {

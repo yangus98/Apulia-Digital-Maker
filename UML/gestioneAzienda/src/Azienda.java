@@ -95,7 +95,6 @@ public class Azienda {
             String ruolo = "D";
             return new Dirigente(nome, cognome, id, anniServizio, stipendioLordo, stipendioNetto, premioProduzione, ruolo);
         } else {
-            System.out.println("Tipologia non valida.");
             return new Dipendente("","",0,0,0,0,"");
         }
     }
@@ -136,8 +135,6 @@ public class Azienda {
                         listaDip.remove(i);
                     }
                 }
-            } else {
-                System.out.println("Nessun dipendente cancellato.");
             }
         }
     }
@@ -193,8 +190,6 @@ public class Azienda {
                         listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0, "N"));
                     }
                 }
-            } else {
-                System.out.println("Stagisti non assunti!");
             }
         }
     }
@@ -242,35 +237,33 @@ public class Azienda {
             System.out.println("Valore non valido, inserisci un numero intero a 6 cifre!");
             sc.next();
         }
-        int sceltaId = sc.nextInt();
+        int sceltaIdDip = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < listaDip.size(); i++) {
-            Dipendente dipendente = listaDip.get(i);
-            if (sceltaId == dipendente.getId()) {
+           Dipendente dipendente = listaDip.get(i);
+            if (sceltaIdDip == dipendente.getId()) {
                 System.out.println("Cosa vuoi modificare...");
                 System.out.println("n - Nome");
                 System.out.println("c - Cognome");
-                System.out.println("a - Anni di anzianità");
+                System.out.println("a - Anni di servizio");
                 String sceltaMod = sc.nextLine();
-                if ("n".equals(sceltaMod)) {
+                if("n".equals(sceltaMod)){
                     System.out.println("Inserisci il nome da modificare");
                     String nomeMod = sc.nextLine();
                     dipendente.setNome(nomeMod);
-                } else if ("c".equals(sceltaMod)) {
+                } else if("c".equals(sceltaMod)) {
                     System.out.println("Inserisci il cognome da modificare");
                     String cognomeMod = sc.nextLine();
                     dipendente.setCognome(cognomeMod);
-                } else if ("a".equals(sceltaMod)) {
-                    System.out.println("Inserisci gli anni di anzianità da modificare");
+                } else if("a".equals(sceltaMod)) {
+                    System.out.println("Inserisci gli anni di servizio da modificare");
                     while(!sc.hasNextInt()){
                         System.out.println("Valore non valido, inserisci un numero intero!");
                         sc.next();
                     }
-                    int anniMod = sc.nextInt();
+                    int anzMod = sc.nextInt();
                     sc.nextLine();
-                    dipendente.setAnniServizio(anniMod);
-                } else {
-                    System.out.println("Non hai modificato nulla!");
+                    dipendente.setAnniServizio(anzMod);
                 }
             }
         }
@@ -309,8 +302,6 @@ public class Azienda {
                     int stageMod = sc.nextInt();
                     sc.nextLine();
                     stagista.setOreStage(stageMod);
-                } else {
-                    System.out.println("Non hai modificato nulla!");
                 }
             }
         }
