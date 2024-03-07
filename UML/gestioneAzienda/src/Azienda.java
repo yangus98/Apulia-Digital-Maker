@@ -40,9 +40,9 @@ public class Azienda {
         listaDip.add(new Progettista("Rosy","Gialli", 143560,18,40000,0,"P"));
         listaDip.add(new Progettista("Marika","Neri", 123450,44,40000,0,"P"));
         listaDip.add(new Progettista("Paola","De Amicis", 674010,22,40000,0,"P"));
-        listaDip.add(new Progettista("Simone","Manzoni", 167543,12,40000,0,"P"));
+        listaDip.add(new Progettista("Simone","Manzoni", 167543,42,40000,0,"P"));
         listaDip.add(new Progettista("Davide","Alighieri", 546740,4,40000,0,"P"));
-        listaDip.add(new Progettista("Marco","Pirandello", 653346,7,40000,0,"P"));
+        listaDip.add(new Progettista("Marco","Pirandello", 653346,40,40000,0,"P"));
         listaDip.add(new Progettista("Dario","Savoiardi", 975433,10,40000,0,"P"));
         listaDip.add(new Progettista("Eddy","Violetti", 855675,2,40000,0,"P"));
         listaDip.add(new Progettista("Elly","Twain", 673432,9,40000,0,"P"));
@@ -155,9 +155,6 @@ public class Azienda {
                         listaDip.remove(i);
                     }
                 }
-                System.out.println("Dipendenti rimossi!");
-            }else{
-                System.out.println("Dipendenti non rimossi!");
             }
         }
     }
@@ -214,8 +211,6 @@ public class Azienda {
                         listaDip.add(new NeoAssunto(stagista.getNome(), stagista.getCognome(), stagista.getId(), 0, 30000.00, 0, "N"));
                     }
                 }
-
-                System.out.println("Stagisti assunti");
             }else{
                 noAssunto = true;
             }
@@ -414,7 +409,6 @@ public class Azienda {
 
     public void licenziaStagistaInBlocco() {
         boolean trovato = false;
-        boolean noLic = false;
 
         for (int i = listaStag.size() - 1; i >= 0; i--) {
             Stagista stagista = listaStag.get(i);
@@ -437,10 +431,6 @@ public class Azienda {
                         listaStag.remove(i);
                     }
                 }
-
-                System.out.println("Licenziamento stagisti effettuato");
-            } else {
-                System.out.println("Licenziamento stagisti annullato!");
             }
         }
     }
