@@ -68,21 +68,17 @@ function sum(num1, num2){
 }
 
 document.write("<p>"+sum(3,5)+"</p>");
-*/
+
 
 // creare la funzione divisione che realizzi la divisione tra 2 numeri interi e controlla se da resto o meno
 
 function divisione(num1, num2){
-    while(num2 === 0){
+    while(num2 === 0 || !Number.isInteger(num2)){
         num2 = parseFloat(prompt("Reinserisci il divisore: "));
     }
 
     while(!Number.isInteger(num1)) {
         num1 = parseFloat(prompt("Reinserisci il dividendo: "));
-    }
-
-    while(!Number.isInteger(num2)) {
-        num2 = parseFloat(prompt("Reinserisci il divisore: "));
     }
 
     if(num1 % num2 === 0){
@@ -98,3 +94,4 @@ let num1 = parseFloat(prompt("Inserisci il dividendo: "));
 let num2 = parseFloat(prompt("Inserisci il divisore: "));
 
 document.write("<p>"+divisione(num1, num2)+"</p>");
+*/
